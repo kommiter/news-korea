@@ -7,15 +7,14 @@ export const rssTriggerTask = schedules.task({
   run: async (_, { ctx }) => {
     logger.log("🛰️ Sending request to n8n webhook...");
 
-    const webhookUrl = "https://your-n8n-deployment/webhook/rss-ingest";
+    const webhookUrl = "https://store-news-korea.conpie.kr/webhook/store";
 
     try {
       const res = await fetch(webhookUrl, {
-        method: "POST",
+        method: "GET",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ trigger: "rss-collect" }),
       });
 
       if (!res.ok) {
